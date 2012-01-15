@@ -1,0 +1,36 @@
+
+symfony plugin:publish-assets
+
+
+class FormForm extends BaseFormForm
+{
+  public function configure()
+  {
+    $this->useFields(array('widget'));
+
+    $this->widgetSchema['widget'] = new ddWidgetFormInputUploadify();
+    $this->validatorSchema['widget'] = new sfValidatorFile();
+  }
+}
+
+
+public function executeUpload(sfWebRequest $request)
+  {
+    $request->checkCSRFProtection();
+    
+    $file = $request->getFiles("form_widget");
+    
+    if (isset($file)) {
+      $uploadPath = sfConfig::get("sf_upload_dir");
+      $f = new sfValidatedFile($file["name"], 
+        $file["type"], 
+        $file["tmp_name"], 
+        $file["size"], 
+        $uploadPath);
+
+      $f->save($f->generateFilename().$f->getOriginalExtension());
+    }
+
+    $this->setLayout(false);
+    return sfView::NONE;
+  }

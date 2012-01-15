@@ -1,0 +1,13 @@
+all:
+  ddWidgetFormInputUploadifyPlugin:
+    enabled_routes: true
+    auto: true
+    display_data: speed
+    sim_upload_limit: 2
+    
+    uploadify_path: /ddWidgetFormInputUploadifyPlugin/vendor/jquery-uploadify
+    include_jquery: false
+    uploader: uploadify.swf
+    cancel_img: cancel.png
+    multi: false
+    
