@@ -1,3 +1,4 @@
+## Based on plUploadifyPlugin by Chris LeBlanc <chris@webPragmatist.com>
 
 symfony plugin:publish-assets
 
